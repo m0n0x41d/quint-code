@@ -30,7 +30,7 @@ func New(dbPath string) (*DB, error) {
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// Create tables if not exist (bootstrap)
 	schema := `
 	CREATE TABLE IF NOT EXISTS holons (

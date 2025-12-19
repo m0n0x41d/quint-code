@@ -78,7 +78,7 @@ func (c *Calculator) calculateReliabilityWithVisited(ctx context.Context, holonI
 		// Evidence Decay Logic
 		if validUntil != nil && time.Now().After(*validUntil) {
 			report.Factors = append(report.Factors, "Evidence expired (Decay applied)")
-			score = 0.1 // Penalty for expiration, not zero but close
+			score = 0.1                // Penalty for expiration, not zero but close
 			report.DecayPenalty += 0.9 // Track how much was lost
 		}
 		totalScore += score
