@@ -113,7 +113,7 @@ func (s *Server) handleInitialize(req JSONRPCRequest) {
 			"tools": map[string]interface{}{},
 		},
 		"serverInfo": map[string]string{
-			"name":    "quint-code",
+			"name":    "github.com/m0n0x41d/quint-code",
 			"version": "4.0.0",
 		},
 	})

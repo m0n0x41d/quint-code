@@ -10,8 +10,8 @@ import (
 	"strings"
 	"time"
 
-	"quint-mcp/assurance"
-	"quint-mcp/db"
+	"github.com/m0n0x41d/quint-code/assurance"
+	"github.com/m0n0x41d/quint-code/db"
 )
 
 type Tools struct {
@@ -349,7 +349,7 @@ func (t *Tools) FinalizeDecision(title, winnerID, context, decision, rationale, 
 	}
 	drrContent += fmt.Sprintf("## Consequences\n%s\n", consequences)
 
-	drrName := fmt.Sprintf("DRR-%d-%s.md", time.Now().Unix(), t.Slugify(title))
+	drrName := fmt.Sprintf("DRR-%s-%s.md", time.Now().Format("2006-01-02"), t.Slugify(title))
 	drrPath := filepath.Join(t.GetFPFDir(), "decisions", drrName)
 	if err := os.WriteFile(drrPath, []byte(drrContent), 0644); err != nil {
 		return "", err

@@ -7,8 +7,9 @@ import (
 	"path/filepath"
 	"strings"
 
+	"github.com/m0n0x41d/quint-code/db"
+
 	"github.com/spf13/cobra"
-	"quint-mcp/db"
 )
 
 var (
@@ -84,7 +85,7 @@ func runInit(cmd *cobra.Command, args []string) error {
 	binaryPath, err := getBinaryPath()
 	if err != nil {
 		fmt.Printf("  ⚠ Could not determine binary path: %v\n", err)
-		binaryPath = "quint-code"
+		binaryPath = "github.com/m0n0x41d/quint-code"
 	}
 
 	if initAll {
@@ -235,7 +236,7 @@ func mergeMCPConfig(configPath, binaryPath, projectRoot string, extraFields map[
 		server.Timeout = timeout
 	}
 
-	config.MCPServers["quint-code"] = server
+	config.MCPServers["github.com/m0n0x41d/quint-code"] = server
 
 	if err := os.MkdirAll(filepath.Dir(configPath), 0755); err != nil {
 		return err
@@ -305,4 +306,3 @@ env = { QUINT_PROJECT_ROOT = "%s" }
 
 	return os.WriteFile(configPath, []byte(updated), 0644)
 }
-
